@@ -1,0 +1,40 @@
+1) Is the following code legal?
+try {
+}
+finally {
+}
+YES
+
+
+2) What exception types can be caught by the following handler?
+
+catch (Exception e) {
+
+}
+Catches all types of Exeptions
+
+
+
+3) What is wrong with using this type of exception handler?
+
+Is there anything wrong with the following exception handler as written? Will this code compile?
+
+
+try {
+
+
+} catch (Exception e) {
+
+
+
+} catch (ArithmeticException a) {
+
+}mising
+
+
+If yes why?
+
+If no why?
+Catch all Exeptions before catcing ArithmeticException -> nonsense
+
+
