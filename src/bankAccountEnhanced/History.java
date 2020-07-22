@@ -6,9 +6,9 @@ import java.util.GregorianCalendar;
 
 public class History {
 	private float transaction;
-	GregorianCalendar today;
+	final GregorianCalendar today;
 	boolean accepted;
-	SimpleDateFormat dateFormat = new SimpleDateFormat("kk:mm dd.MM.yyyy");
+	final SimpleDateFormat dateFormat = new SimpleDateFormat("kk:mm dd.MM.yyyy");
 
 	public History(float transaction, boolean accepted) {
 		this.transaction = transaction;
@@ -36,10 +36,6 @@ public class History {
 		this.transaction = transaction;
 	}
 
-	public void setToday(GregorianCalendar today) {
-		this.today = today;
-	}
-
 	public void setAccepted(boolean accepted) {
 		this.accepted = accepted;
 	}
@@ -54,8 +50,7 @@ public class History {
 
 	public String getUnformattedDate(){
 		SimpleDateFormat sdf = new SimpleDateFormat("kk:mm dd.MM.yyyy");
-		String line = sdf.format(this.today.getTime());
-		return line;
+		return sdf.format(this.today.getTime());
 	}
 
 

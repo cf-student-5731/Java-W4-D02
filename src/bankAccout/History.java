@@ -5,10 +5,10 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class History {
-	private float transaction;
-	GregorianCalendar today;
-	boolean accepted;
-	SimpleDateFormat dateFormat = new SimpleDateFormat("kk:mm dd.MM.yyyy");
+	private final float transaction;
+	final GregorianCalendar today;
+	final boolean accepted;
+	final SimpleDateFormat dateFormat = new SimpleDateFormat("kk:mm dd.MM.yyyy");
 
 	public History(float transaction, boolean accepted) {
 		this.transaction = transaction;

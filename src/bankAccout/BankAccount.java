@@ -7,7 +7,7 @@ public class BankAccount {
 	private int number;
 	private float balance;
 	private float limit = 0;
-	ArrayList<History> history = new ArrayList<>();
+	final ArrayList<History> history = new ArrayList<>();
 
 	public BankAccount(String firstName, String lastName, int number) {
 		setFirstName(firstName);
@@ -51,7 +51,7 @@ public class BankAccount {
 	public void printAccountData(){
 		String pattern = "%-13s%-13s%13s%n";
 		System.out.printf(pattern, "Firstname", "Lastname", "Accountnumber");
-		System.out.printf(pattern, this.firstName, this.lastName, String.valueOf(this.number));
+		System.out.printf(pattern, this.firstName, this.lastName, this.number);
 		System.out.println("---------------------------------------");
 		for (History h : this.history){
 			System.out.printf("%-23s%16s%n", h.getDate(), h.getTransaction());

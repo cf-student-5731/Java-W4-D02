@@ -12,7 +12,7 @@ public class BankAccount {
 	private int number;
 	private float balance;
 	private float limit = 0;
-	ArrayList<History> history = new ArrayList<>();
+	final ArrayList<History> history = new ArrayList<>();
 
 
 	public BankAccount(String firstName, String lastName, int number) {
@@ -37,43 +37,37 @@ public class BankAccount {
 		this.limit = limit;
 	}
 
-	public void addMoney(float amount){
+	public void addMoney(float amount) {
 		this.balance += amount;
 		history.add(new History(amount, true));
 	}
 
 	public void widthDrawMoney(float amount) throws BankAccountNegativeException {
-		if(this.balance - amount < this.limit){
+		if (this.balance - amount < this.limit) {
 			history.add(new History(-amount, false));
 			throw new BankAccountNegativeException("Bank account would be below credit limit! Transaction cancelled!");
-		}
-		else{
+		} else {
 			this.balance -= amount;
 			history.add(new History(-amount, true));
 		}
 	}
 
-	public void printAccountData(){
+	public void printAccountData() {
 		String pattern = "%s%-13s%-13s%13s%s%n";
-		String line = "";
-		for(int i = 0; i < 39; i++){
-			line += ("-");
-		}
+		String line = "-".repeat(39);
 
 		System.out.printf(pattern, Colors.ANSI_YELLOW, "Firstname", "Lastname", "Accountnumber", Colors.ANSI_RESET);
-		System.out.printf(pattern, Colors.ANSI_BLUE, this.firstName, this.lastName, String.valueOf(this.number), Colors.ANSI_RESET);
+		System.out.printf(pattern, Colors.ANSI_BLUE, this.firstName, this.lastName, this.number, Colors.ANSI_RESET);
 		System.out.println(line);
-		for (History h : this.history){
+		for (History h : this.history) {
 			System.out.printf("%-23s%16s%n", h.getDate(), h.getTransaction());
 		}
 		System.out.println(line);
-		if(this.balance > 0){
+		if (this.balance > 0) {
 			System.out.printf("%-23s%s%16.2f%s%n", "BALANCE: ", Colors.ANSI_GREEN, this.balance, Colors.ANSI_RESET);
-		}
-		else if(this.balance < 0){
+		} else if (this.balance < 0) {
 			System.out.printf("%-23s%s%16.2f%s%n", "BALANCE: ", Colors.ANSI_RED, this.balance, Colors.ANSI_RESET);
-		}
-		else{
+		} else {
 			System.out.printf("%-23s%16.2f%n", "BALANCE: ", this.balance);
 		}
 		System.out.println(line);
@@ -82,20 +76,18 @@ public class BankAccount {
 
 	public void saveAccountDataToFile() {
 		String type;
-		String stringHistory = "";
+		StringBuilder stringHistory = new StringBuilder();
 		String filename = String.valueOf(this.number);
-		if (this instanceof DebitCardAccount){
+		if (this instanceof DebitCardAccount) {
 			type = "bankAccount";
-		}
-		else if(this instanceof CreditCardAccount){
+		} else if (this instanceof CreditCardAccount) {
 			type = "creditCardAccount";
-		}
-		else{
+		} else {
 			type = "bankAccount";
 		}
 
-		for (History h : this.history){
-			stringHistory += "\t" + h.getUnformattedDate() + "\t" + h.getUnformattedTransaction() + "\t" + h.isAccepted();
+		for (History h : this.history) {
+			stringHistory.append("\t").append(h.getUnformattedDate()).append("\t").append(h.getUnformattedTransaction()).append("\t").append(h.isAccepted());
 		}
 
 
@@ -110,24 +102,22 @@ public class BankAccount {
 
 			);
 			file.close();
-		}
-		catch(IOException e){
+		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
 	}
 
-	public void readDataFromFile(String filename)  {
+	public void readDataFromFile(String filename) {
 		ArrayList<String[]> data = new ArrayList<>();
 		try {
 			BufferedReader file = new BufferedReader(new FileReader(filename));
 			String line = file.readLine();
-			while(line != null){
+			while (line != null) {
 				data.add(line.split("\t"));
 				line = file.readLine();
 			}
 			file.close();
-		}
-		catch(IOException e){
+		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
 
@@ -137,32 +127,19 @@ public class BankAccount {
 
 		this.balance = (Float.parseFloat(data.get(0)[3]));
 
-		for (int i = 5; i < data.get(0).length; i+=3){
+		for (int i = 5; i < data.get(0).length; i += 3) {
 			History temp = new History(0, true);
 
 			try {
 				Date d = temp.getDateFormat().parse(data.get(0)[i]);
 				temp.today.setTime(d);
-				temp.setTransaction(Float.parseFloat(data.get(0)[i+1]));
-					boolean accepted = false;
-					if(data.get(0)[i+2].equals("true")){
-						temp.setAccepted(true);
-					}
-					else{
-						temp.setAccepted(false);
-					}
-
+				temp.setTransaction(Float.parseFloat(data.get(0)[i + 1]));
+				temp.setAccepted((data.get(0)[i+2].equals("true")));
 
 				this.history.add(temp);
-			}catch(ParseException e){
-			System.out.println(e.getMessage());
+			} catch (ParseException e) {
+				System.out.println(e.getMessage());
+			}
 		}
-
-
-
-		}
-
-
 	}
-
 }
