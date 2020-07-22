@@ -5,7 +5,7 @@ public class A1 {
 		int[] myNumbers = {1, 2, 3};
 
 		try{
-			System.out.println(myNumbers[10]);
+			System.out.println(myNumbers[0]);
 		}
 		catch(ArrayIndexOutOfBoundsException e){
 			System.out.println(e.getMessage());

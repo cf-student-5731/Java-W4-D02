@@ -9,14 +9,13 @@ public class A3 {
 
 	public static void cat(File named) {
 		RandomAccessFile input = null;
-		String line = null;
+		String line;
 
 		try {
 			input = new RandomAccessFile(named, "r");
 			while ((line = input.readLine()) != null) {
 				System.out.println(line);
 			}
-			return;
 		}
 		catch (FileNotFoundException e){
 			System.out.println(e.getMessage());

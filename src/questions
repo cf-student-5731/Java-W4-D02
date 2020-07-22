@@ -11,7 +11,7 @@ YES
 catch (Exception e) {
 
 }
-Catches all types of Exeptions
+Catches all types of Exceptions
 
 
 
@@ -29,12 +29,12 @@ try {
 
 } catch (ArithmeticException a) {
 
-}mising
+}missing
 
 
 If yes why?
 
 If no why?
-Catch all Exeptions before catcing ArithmeticException -> nonsense
+Catch all Exceptions before catching ArithmeticException -> nonsense
 
 

@@ -3,18 +3,11 @@ package intermediate;
 public class A5 {
 
 	public static void methodWithThreeExceptions(int exNo) throws Type_01_Exception, Type_02_Exception, Type_03_Exception{
-		switch (exNo){
-			case 1:
-				throw new Type_01_Exception("Type one Exception");
-
-			case 2:
-				throw new Type_02_Exception("Type two Exception");
-
-			case 3:
-				throw new Type_03_Exception("Type three Exception");
-
-			default:
-				System.out.println("nothing");
+		switch (exNo) {
+			case 1 -> throw new Type_01_Exception("Type one Exception");
+			case 2 -> throw new Type_02_Exception("Type two Exception");
+			case 3 -> throw new Type_03_Exception("Type three Exception");
+			default -> System.out.println("nothing");
 		}
 	}
 

@@ -3,8 +3,8 @@ package intermediate;
 public class A4 {
 
 	private static class g {
-		private void method() throws AnyExeption{
-			throw new AnyExeption("AnyExeption");
+		private void method() throws AnyException{
+			throw new AnyException("AnyException");
 		}
 	}
 
@@ -14,9 +14,9 @@ public class A4 {
 				g g = new g();
 				g.method();
 			}
-			catch(AnyExeption a){
+			catch(AnyException a){
 				System.out.println(a.getMessage() + " passed through to caller");
-				throw new ADifferentException("A different Exeption");
+				throw new ADifferentException("A different Exception");
 			}
 
 
@@ -30,7 +30,7 @@ public class A4 {
 			f.method();
 		}
 		catch(ADifferentException d){
-			System.out.println(d.getMessage() + " cought in main");
+			System.out.println(d.getMessage() + " caught in main");
 		}
 
 	}
