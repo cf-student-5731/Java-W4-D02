@@ -1,1 +1,1 @@
-Jane	Doe	10003	-2000.0	creditCardAccount	10:56 22.07.2020	500.0	true	10:56 22.07.2020	-100.0	true	10:56 22.07.2020	-2400.0	true
+Jane	Doe	10003	-2000.0	creditCardAccount	11:31 22.07.2020	500.0	true	11:31 22.07.2020	-100.0	true	11:31 22.07.2020	-2400.0	true

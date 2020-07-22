@@ -121,9 +121,9 @@ public class BankAccount {
 			System.out.println(e.getMessage());
 		}
 
-//		setFirstName(data.get(0)[0]);
-//		setLastName(data.get(0)[1]);
-//		setNumber(Integer.parseInt(data.get(0)[2]));
+		setFirstName(data.get(0)[0]);
+		setLastName(data.get(0)[1]);
+		setNumber(Integer.parseInt(data.get(0)[2]));
 
 		this.balance = (Float.parseFloat(data.get(0)[3]));
 
