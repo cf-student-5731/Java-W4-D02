@@ -79,7 +79,7 @@ public class BankAccount {
 		StringBuilder stringHistory = new StringBuilder();
 		String filename = String.valueOf(this.number);
 		if (this instanceof DebitCardAccount) {
-			type = "bankAccount";
+			type = "debitCardAccount";
 		} else if (this instanceof CreditCardAccount) {
 			type = "creditCardAccount";
 		} else {
@@ -135,7 +135,6 @@ public class BankAccount {
 				temp.today.setTime(d);
 				temp.setTransaction(Float.parseFloat(data.get(0)[i + 1]));
 				temp.setAccepted((data.get(0)[i+2].equals("true")));
-
 				this.history.add(temp);
 			} catch (ParseException e) {
 				System.out.println(e.getMessage());

@@ -41,10 +41,8 @@ public class Main {
 		}
 
 		BankAccount newA = new BankAccount("Happy", "Coding", 99999);
-		newA.readDataFromFile("account_10001.txt");
+		newA.readDataFromFile("account_10001_old.txt");
 		newA.printAccountData();
-
-
 
 	}
 
